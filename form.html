@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Pierwszy komponent w React.js</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
+        <script src="https://unpkg.com/react/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/babel-standalone/babel.js"></script>
+    </head>
+
+    <body>
+        <div id="app"></div>
+        <script type="text/babel">
+class App extends React.Component{
+    constructor(){
+        super();
+        this.state= {name:"Imię",lastname:"Nazwisko"};
+    }
+    showName(e){
+        this.setState({
+           name: e.target.value
+        });
+    }
+    showLastName(e){
+        this.setState({
+            lastname: e.target.value
+        });
+    }
+    render(){
+        return(
+    <form>
+        Imię: <input type="text" value={this.state.name} onChange={this.showName.bind(this)}/>
+        Nazwisko: <input type="text" value={this.state.lastname} onChange={this.showLastName.bind(this)}/>
+        <output>{this.state.name} </output>
+        <output>{this.state.lastname}</output>
+    </form>
+            );
+    }
+}
+ReactDOM.render(
+<App />,
+document.getElementById("app")
+)
+        </script>
+    </body>
+
+</html>

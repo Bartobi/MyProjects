@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Pierwszy komponent w React.js</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
+    <script src="https://unpkg.com/react/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone/babel.js"></script>
+</head>
+
+<body>
+    <div id="app"></div>
+    <div id="main"></div>
+    <script type="text/babel">
+        function AppHeader(){
+    return(
+        <header className="ui menu">
+  <nav className="ui container">
+    <a href="#" className="header item">
+      <img className="logo" src="https://typeofweb.com/wp-content/uploads/2017/08/cropped-typeofweb_logo-04-white-smaller-1-e1504359870362.png" />
+      Lista kontaktów
+    </a>
+    <div className="header item">
+      <button className="ui button">Dodaj</button>
+    </div>
+  </nav>
+</header>
+    );
+}
+function List({Image, Name, Description}){
+    const imgUrl = `https://api.adorable.io/avatars/55/${Image}.png`;
+    return(
+    <li className="item" onClick={Alarm}>
+        <img className="ui mini rounded image" src={imgUrl}/>
+        <div className="content">
+        <h4 className="header">{Name}</h4>
+        <div className="description">{Description}</div>
+      </div>
+    </li>
+    );
+}
+function Alarm(){
+    alert('Kliknięto')
+}
+function ContactsList(){
+    return(
+    <main className="ui main text container">
+    <ul className="ui relaxed divided list selection">
+    <List
+    Image="typeofweb1"
+    Name="John"
+    Description="Java Developer"
+    />
+    <List
+    Image="typeofweb2"
+    Name="Angelina"
+    Description="React Developer"
+    />
+    <List
+    Image="typeofweb3"
+    Name="Bartłomiej"
+    Description="Front-End Developer"
+    />
+  </ul>
+</main>
+    );
+}
+function App(){
+    return(
+        <div>
+    <AppHeader />
+    <ContactsList />
+    </div>
+    );
+}
+ReactDOM.render(
+    <App />,
+document.getElementById('app')
+);
+class Alert extends React.Component{
+    render(){
+        return(
+            <button onClick={this.Warning}>Alarm</button>
+        );
+    }
+    Warning(){
+        alert("Alarm!");
+    }
+}
+ReactDOM.render(
+<Alert />,
+document.getElementById('main')
+);
+  </script>
+</body>
+
+</html>
