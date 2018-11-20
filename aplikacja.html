@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Pierwszy komponent w React.js</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
+    <script src="https://unpkg.com/react/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone/babel.js"></script>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script type="text/babel">
+class App extends React.Component {
+constructor() {
+super();
+this.state = {counter: 0,summary:0,doubleclick:0};
+}
+render() {
+return (
+<div>
+    <button onClick={this.increment.bind(this)} onDoubleClick={this.double.bind(this)}>+</button>
+    <output>{this.state.counter}</output>
+    <button onClick={this.decrease.bind(this)} onDoubleClick={this.double.bind(this)}>-</button>
+
+    <h2>Suma kliknięć:</h2>
+    <output>{this.state.summary}</output>
+    <h2>Podwójne kliknięcia:</h2>
+    <output>{this.state.doubleclick}</output>
+</div>
+);
+}
+increment() {
+this.setState({
+counter: this.state.counter + 1,
+summary: this.state.summary + 1
+})
+}
+decrease() {
+this.setState({
+counter: this.state.counter - 1,
+summary: this.state.summary + 1
+})
+}
+double() {
+this.setState({
+doubleclick: this.state.doubleclick + 1
+})
+}
+}
+ReactDOM.render(
+<App />,
+document.getElementById("app")
+);
+  </script>
+</body>
+
+</html>
